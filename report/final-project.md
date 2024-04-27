@@ -43,5 +43,5 @@ for i in range(1500):
 ```
 ### Subgrafos de los datos recolectados
 
-<img src="./assets/nodos.JPG" width="356">
+<img src="/assets/nodos.JPG" alt="subgrafo"/></img>
 
