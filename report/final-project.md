@@ -58,3 +58,51 @@ De acuerdo con Du Satoy, Risk es un problema clásico de combinatoria y probabil
 En la dinámica competitiva del juego Risk, los jugadores se enfrentan a una serie de decisiones estratégicas complejas y desafíos tácticos mientras intentan conquistar territorios y dominar el mapa mundial. Sin embargo, la naturaleza del juego puede plantear diversos problemas y dilemas para los jugadores, desde la toma de decisiones sobre qué territorios atacar o fortificar, hasta la gestión de alianzas y recursos limitados.
 Sin embargo, hemos adaptado la dinámica del juego para que sean planetas invadidos en vez de países.
 Es por ello que el algoritmo que desarrollaremos competirá con el jugador tomando una decisión acertada respecto a qué planetas puede invadir de acuerdo a la cantidad de soldados que tenga el planeta invadido.
+
+## Descripción y visualización del conjunto de datos (dataset)
+
+El dataset ha sido generado por nosotros mismos usando un algoritmo de generación de datos sintéticos en el lenguaje Python y las librerias csv y random.
+El dataset contiene 1500 registros y 2 columnas. Las columnas son las siguientes:
+- La primera columna tiene el nombre del planeta
+- La segunda columna tiene la cantidad de tropas que posee el planeta
+
+### Codigo del Algoritmo
+A continuación se muestra el código del algoritmo que hemos usado para generar el dataset:
+
+```
+import csv
+import random
+
+vowels = ["A", "E","I","O","U"]
+cons = ["B", "C", "D", "F", "G","H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "Z"]
+def buildWord():
+    randomNumberForName = random.randint(00,99)
+    randomNumber = random.randint(2,4)
+    name = ""
+    for x in range(randomNumber):
+        randomVowel = random.choice(vowels)
+        randomCons = random.choice(cons)
+        name = name + randomVowel + randomCons 
+    name = name + "-" + str(randomNumberForName)
+    return name
+    
+def buildNumber():
+    randomNumber = random.randint(10,99)
+    return randomNumber
+
+
+def writeToCsv():
+    with open ('names.csv', 'a') as file:
+        writer = csv.writer(file)
+        name = buildWord()
+        number = buildNumber()
+        writer.writerow([name] + [number])
+
+
+for i in range(1500):
+    writeToCsv()
+```
+### Subgrafos de los datos recolectados
+
+<img src="/assets/nodos.JPG" alt="subgrafo"/></img>
+
